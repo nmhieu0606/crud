@@ -1,0 +1,30 @@
+{
+  "name": "nuxt-with-express-mysql",
+  "version": "1.0.0",
+  "description": "My primo Nuxt.js project",
+  "author": "Aslam Doctor",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate",
+    "migrate": "node api/migrate.js"
+  },
+  "dependencies": {
+    "@nuxtjs/auth": "^4.9.1",
+    "@nuxtjs/axios": "^5.12.1",
+    "bcryptjs": "^2.4.3",
+    "bootstrap": "^4.5.2",
+    "bootstrap-vue": "^2.16.0",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.4",
+    "express-validator": "^6.6.1",
+    "jsonwebtoken": "^8.5.1",
+    "mysql": "^2.18.1",
+    "nuxt": "^2.14.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.9"
+  }
+}
