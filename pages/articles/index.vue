@@ -6,24 +6,17 @@
     </div>
     <hr>
 
-    <div class="alert alert-success"
-      v-if="$route.params.created=='yes'">Record added successfully</div>
-    <div class="alert alert-success"
-      v-if="$route.params.deleted=='yes'">Record deleted successfully</div>
+    <div class="alert alert-success" v-if="$route.params.created == 'yes'">Record added successfully</div>
+    <div class="alert alert-success" v-if="$route.params.deleted == 'yes'">Record deleted successfully</div>
 
-    <div class="list-group"
-      v-if="articles.length">
-      <nuxt-link
-        class="list-group-item list-group-item-action"
-        :to="'/articles/' + article.id"
-        v-for="article in articles"
-        :key="article.id">
+    <div class="list-group" v-if="articles.length">
+      <nuxt-link class="list-group-item list-group-item-action" :to="'/articles/' + article.id"
+        v-for="article in articles" :key="article.id">
         {{ article.title }} - {{ article.author }}
       </nuxt-link>
     </div>
 
-    <div class="alert alert-info"
-      v-else>
+    <div class="alert alert-info" v-else>
       No records found.
     </div>
   </div>
@@ -31,10 +24,10 @@
 
 <script>
 export default {
-  async asyncData(context){
-    const {data} = await context.$axios.get('/api/articles')
+  async asyncData(context) {
+    const { data } = await context.$axios.get('/api/articles')
     return {
-      articles : data
+      articles: data
     }
   },
 }

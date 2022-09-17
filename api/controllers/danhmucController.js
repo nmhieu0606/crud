@@ -3,7 +3,7 @@ const validation = require("express-validator");
 const { response, json } = require("express");
 
 module.exports.list = function(req, res, next) {
-  con.query("select * from khachhang ", function(err, result, fields) {
+  con.query("select * from danhmuc ", function(err, result, fields) {
     if (err) {
       return res.status(500).json({
         message: "Lỗi load danh sách",
@@ -19,7 +19,7 @@ module.exports.list = function(req, res, next) {
 module.exports.show = function(req, res, next) {
   var id = req.params.id;
 
-  con.query("select * from khachhang where id=?", [id], function(
+  con.query("select * from danhmuc where id=?", [id], function(
     err,
     result,
     fields
@@ -38,14 +38,12 @@ module.exports.show = function(req, res, next) {
 
 module.exports.update = function(req, res, next) {
   var id = req.params.id;
-  const khachhang = {};
+  const danhmuc = {};
   // initialize record
 
-  khachhang.hovaten = req.body.hovaten;
-  khachhang.email = req.body.email;
-  khachhang.diachi = req.body.diachi;
-  khachhang.sdt = req.body.sdt;
-  con.query("UPDATE khachhang SET ? WHERE id=?", [khachhang, id], function(
+  danhmuc.danhmuc = req.body.danhmuc;
+
+  con.query("UPDATE danhmuc SET ? WHERE id=?", [danhmuc, id], function(
     err,
     result,
     fields
@@ -64,13 +62,10 @@ module.exports.update = function(req, res, next) {
 };
 
 module.exports.create = function(req, res, next) {
-  const khachhang = {};
-  khachhang.hovaten = req.body.hovaten;
-  khachhang.email = req.body.email;
-  khachhang.diachi = req.body.diachi;
-  khachhang.sdt = req.body.sdt;
+  const danhmuc = {};
+  danhmuc.danhmuc = req.body.danhmuc;
 
-  con.query("insert into khachhang set ?", khachhang, function(
+  con.query("insert into danhmuc set ?", danhmuc, function(
     err,
     result,
     fields
@@ -88,7 +83,7 @@ module.exports.create = function(req, res, next) {
 };
 module.exports.delete = function(req, res, next) {
   var id = req.params.id;
-  con.query("delete from khachhang where id=?", id, function(
+  con.query("delete from danhmuc where id=?", id, function(
     err,
     result,
     fields

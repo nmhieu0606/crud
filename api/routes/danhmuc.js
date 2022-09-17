@@ -1,0 +1,11 @@
+const config=require('../config');
+const Router=require('express');
+const router=Router();
+const danhmucController=require('../controllers/danhmucController');
+const { route } = require('./danhmuc');
+router.get('/danhmuc',danhmucController.list);
+router.post('/danhmuc',danhmucController.create);
+router.get('/danhmuc/:id',danhmucController.show);
+router.put('/danhmuc/:id',danhmucController.update);
+router.delete('/danhmuc/:id',danhmucController.delete);
+module.exports=router;

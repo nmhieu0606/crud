@@ -12,7 +12,6 @@ module.exports.list = function (req, res, next) {
           err: err
       });
     }
-
     if(results.length>0){
       return res.json(results);
     }
@@ -83,7 +82,7 @@ module.exports.create = [
         return res.status(500).json({
           message: 'Error saving record',
           err: err
-        });
+        }); 
       }
       return res.json({
           message: 'saved',

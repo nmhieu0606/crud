@@ -1,0 +1,10 @@
+const config=require('../config');
+const Router=require('express');
+const router=Router();
+const hoadonController=require('../controllers/hoadonController');
+const { route } = require('./hoadon');
+router.get('/hoadon',hoadonController.list);
+router.post('/hoadon',hoadonController.create);
+router.get('/hoadon/:id',hoadonController.show);
+router.delete('/hoadon/:id',hoadonController.delete);
+module.exports=router;

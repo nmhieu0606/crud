@@ -15,16 +15,22 @@
     "@nuxtjs/auth": "^4.9.1",
     "@nuxtjs/axios": "^5.12.1",
     "bcryptjs": "^2.4.3",
-    "bootstrap": "^4.5.2",
-    "bootstrap-vue": "^2.16.0",
+    "bootstrap": "^4.6.2",
+    "bootstrap-vue": "^2.22.0",
+    "console": "^0.7.2",
     "cross-env": "^5.2.0",
     "express": "^4.16.4",
     "express-validator": "^6.6.1",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
-    "nuxt": "^2.14.1"
+    "nuxt": "^2.14.1",
+    "nuxt-sweetalert2": "^1.0.0",
+    "nuxtjs-sweetalert2": "^2.0.1",
+    "vue-sweetalert2": "^5.0.5"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "node-sass": "^7.0.1",
+    "nodemon": "^1.18.9",
+    "sass-loader": "^13.0.2"
   }
 }

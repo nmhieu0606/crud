@@ -5,15 +5,11 @@
 
     <div class="row">
       <div class="col-md-6">
-        <form action=""
-          method="post"
-          @submit.prevent="submitForm()">
+        <form action="" method="post" @submit.prevent="submitForm()">
 
           <div class="form-group">
             <label for="">Title</label>
-            <input type="text" class="form-control"
-              :class="{ 'is-invalid': errors && errors.title }"
-              v-model="title">
+            <input type="text" class="form-control" :class="{ 'is-invalid': errors && errors.title }" v-model="title">
             <div class="invalid-feedback" v-if="errors && errors.title">
               {{ errors.title.msg }}
             </div>
@@ -21,9 +17,7 @@
 
           <div class="form-group">
             <label for="">Author</label>
-            <input type="text" class="form-control"
-              :class="{ 'is-invalid': errors && errors.author }"
-              v-model="author">
+            <input type="text" class="form-control" :class="{ 'is-invalid': errors && errors.author }" v-model="author">
             <div class="invalid-feedback" v-if="errors && errors.author">
               {{ errors.author.msg }}
             </div>
@@ -31,8 +25,7 @@
 
           <div class="form-group">
             <label for="">Body</label>
-            <textarea cols="30" rows="4" class="form-control"
-              :class="{ 'is-invalid': errors && errors.body }"
+            <textarea cols="30" rows="4" class="form-control" :class="{ 'is-invalid': errors && errors.body }"
               v-model="body"></textarea>
             <div class="invalid-feedback" v-if="errors && errors.body">
               {{ errors.body.msg }}
@@ -52,32 +45,32 @@
 export default {
   middleware: 'auth',
 
-  data(){
-    return{
-      errors:null,
-      title:null,
-      author:null,
-      body:null
+  data() {
+    return {
+      errors: null,
+      title: null,
+      author: null,
+      body: null
     }
   },
 
-  methods:{
-    submitForm(){
-      this.$axios.post( '/api/articles', {
-          title: this.title,
-          author: this.author,
-          body: this.body,
-        })
+  methods: {
+    submitForm() {
+      this.$axios.post('/api/articles', {
+        title: this.title,
+        author: this.author,
+        body: this.body,
+      })
         .then((response) => {
           console.log(response)
 
-          if(response.data.id){
-            this.$router.push({ name:'articles', params:{ created:'yes' } })
+          if (response.data.id) {
+            this.$router.push({ name: 'articles', params: { created: 'yes' } })
           }
         })
-        .catch( (error) => {
+        .catch((error) => {
           console.log(error)
-          if(error.response.data.errors){
+          if (error.response.data.errors) {
             this.errors = error.response.data.errors
           }
         });

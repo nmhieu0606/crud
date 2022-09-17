@@ -3,7 +3,7 @@ const validation = require("express-validator");
 const { response, json } = require("express");
 
 module.exports.list = function(req, res, next) {
-  con.query("select * from khachhang ", function(err, result, fields) {
+  con.query("select * from hoadon ", function(err, result, fields) {
     if (err) {
       return res.status(500).json({
         message: "Lỗi load danh sách",
@@ -19,7 +19,7 @@ module.exports.list = function(req, res, next) {
 module.exports.show = function(req, res, next) {
   var id = req.params.id;
 
-  con.query("select * from khachhang where id=?", [id], function(
+  con.query("select * from hoadon where id=?", [id], function(
     err,
     result,
     fields
@@ -38,14 +38,14 @@ module.exports.show = function(req, res, next) {
 
 module.exports.update = function(req, res, next) {
   var id = req.params.id;
-  const khachhang = {};
+  const hoadon = {};
   // initialize record
 
-  khachhang.hovaten = req.body.hovaten;
-  khachhang.email = req.body.email;
-  khachhang.diachi = req.body.diachi;
-  khachhang.sdt = req.body.sdt;
-  con.query("UPDATE khachhang SET ? WHERE id=?", [khachhang, id], function(
+  hoadon.khachhang_id = req.body.khachhang_id;
+  hoadon.nhanvien_id = req.body.nhanvien_id;
+
+
+  con.query("UPDATE hoadon SET ? WHERE id=?", [hoadon, id], function(
     err,
     result,
     fields
@@ -64,13 +64,16 @@ module.exports.update = function(req, res, next) {
 };
 
 module.exports.create = function(req, res, next) {
-  const khachhang = {};
-  khachhang.hovaten = req.body.hovaten;
-  khachhang.email = req.body.email;
-  khachhang.diachi = req.body.diachi;
-  khachhang.sdt = req.body.sdt;
+  let d=new Date();
+  const hoadon = {};
+  hoadon.khachhang_id = req.body.khachhang_id;
+  hoadon.nhanvien_id = req.body.nhanvien_id;
+  hoadon.chitiet_hd = req.body.chitiet_hd;
+  hoadon.tongtien = req.body.tongtien;
+  hoadon.ngaylap=d;
+  
 
-  con.query("insert into khachhang set ?", khachhang, function(
+  con.query("insert into hoadon set ?", hoadon, function(
     err,
     result,
     fields
@@ -81,14 +84,14 @@ module.exports.create = function(req, res, next) {
         err: err
       });
     }
-    return res.json({
+    return res.status(200).json({
       message: "success"
     });
   });
 };
 module.exports.delete = function(req, res, next) {
   var id = req.params.id;
-  con.query("delete from khachhang where id=?", id, function(
+  con.query("delete from hoadon where id=?", id, function(
     err,
     result,
     fields

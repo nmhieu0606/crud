@@ -1,8 +1,9 @@
 <template>
   <div>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-      <nuxt-link to="/" class="navbar-brand">Express CRUD {{this.countformstore}}</nuxt-link>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <nuxt-link to="/" class="navbar-brand">Express CRUD </nuxt-link>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
 
@@ -14,10 +15,23 @@
           <li class="nav-item">
             <nuxt-link to="/articles" class="nav-link" exact-active-class="active">Articles</nuxt-link>
           </li>
+          <li class="nav-item">
+            <nuxt-link to="/khachhang" class="nav-link" exact-active-class="active">Khách hàng</nuxt-link>
+          </li>
+          
+          <li class="nav-item">
+            <nuxt-link to="/sanpham" class="nav-link" exact-active-class="active">Sản phẩm</nuxt-link>
+          </li>
+           <li class="nav-item">
+            <nuxt-link to="/hoadon" class="nav-link" exact-active-class="active">Hóa đơn</nuxt-link>
+          </li>
+           <li class="nav-item">
+            <nuxt-link to="/danhmuc" class="nav-link" exact-active-class="active">Danh mục</nuxt-link>
+          </li>
+
         </ul>
 
-        <ul class="navbar-nav"
-          v-if="!$auth.loggedIn">
+        <ul class="navbar-nav" v-if="!$auth.loggedIn">
           <li class="nav-item">
             <nuxt-link to="/user/register" class="nav-link" exact-active-class="active">Register</nuxt-link>
           </li>
@@ -26,8 +40,7 @@
           </li>
         </ul>
 
-        <ul class="navbar-nav"
-          v-if="$auth.loggedIn">
+        <ul class="navbar-nav" v-if="$auth.loggedIn">
           <li class="nav-item">
             <nuxt-link to="/user/my-account" class="nav-link" exact-active-class="active">My Account</nuxt-link>
           </li>
